@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@optio-nx-presentation/api-interfaces';
 
 @Component({
   selector: 'optio-nx-presentation-root',
@@ -8,6 +6,8 @@ import { Message } from '@optio-nx-presentation/api-interfaces';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+  links = [
+    { path: '/', icon: 'home', title: 'home' },
+    { path: '/books', icon: 'view_list', title: 'books' },
+  ];
 }
