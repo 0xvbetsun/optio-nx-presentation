@@ -44,7 +44,7 @@ export class BooksComponent implements OnInit {
     this.books = mockBooks;
   }
 
-  saveWidget(book: Book) {
+  saveBook(book: Book) {
     if (book.id) {
       this.updateBook(book);
     } else {
@@ -65,7 +65,7 @@ export class BooksComponent implements OnInit {
     this.resetForm();
   }
 
-  deleteBooks(book: Book) {
+  deleteBook(book: Book) {
     this.books = this.books.filter((b) => book.id !== b.id);
     this.resetForm();
   }

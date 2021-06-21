@@ -1,1 +1,14 @@
-<p>books works!</p>
+<div class="component-container">
+    <div class="list-component">
+      <optio-nx-presentation-books-list [books]="books"
+        (selected)="selectBook($event)"
+        (deleted)="deleteBook($event)">
+      </optio-nx-presentation-books-list>
+    </div>
+    <div class="details-component">
+      <optio-nx-presentation-book-details [book]="selectedBook"
+        (saved)="saveBook($event)"
+        (cancelled)="resetForm()">
+      </optio-nx-presentation-book-details>
+    </div>
+  </div>
