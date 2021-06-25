@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '@optio-nx-presentation/api-interfaces';
+import { BooksService } from '@optio-nx-presentation/core-data';
+import { Observable } from 'rxjs';
 
 const mockBooks: Book[] = [
   { id: '1', title: 'Book 01', description: 'Pending', pages: 123 },
@@ -20,8 +22,10 @@ const emptyBook: Book = {
   styleUrls: ['./books.component.scss'],
 })
 export class BooksComponent implements OnInit {
-  books: Book[] = [];
+  books$: Observable<Book[]>;
   selectedBook: Book;
+
+  constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
     this.reset();
@@ -41,7 +45,7 @@ export class BooksComponent implements OnInit {
   }
 
   loadBooks() {
-    this.books = mockBooks;
+    this.books$ = this.booksService.all();
   }
 
   saveBook(book: Book) {
@@ -53,24 +57,14 @@ export class BooksComponent implements OnInit {
   }
 
   createBook(book: Book) {
-    const newBook = Object.assign({}, book, { id: this.getRandomID() });
-    this.books = [...this.books, newBook];
-    this.resetForm();
+    this.booksService.create(book).subscribe(() => this.reset());
   }
 
   updateBook(book: Book) {
-    this.books = this.books.map((b) => {
-      return book.id === b.id ? book : b;
-    });
-    this.resetForm();
+    this.booksService.update(book).subscribe(() => this.reset());
   }
 
   deleteBook(book: Book) {
-    this.books = this.books.filter((b) => book.id !== b.id);
-    this.resetForm();
-  }
-
-  private getRandomID() {
-    return Math.random().toString(36).substring(7);
+    this.booksService.delete(book).subscribe(() => this.reset());
   }
 }
