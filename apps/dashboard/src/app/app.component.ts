@@ -10,4 +10,8 @@ export class AppComponent {
     { path: '/', icon: 'home', title: 'home' },
     { path: '/books', icon: 'view_list', title: 'books' },
   ];
+
+  toggleSideNav() {}
+
+  logout() {}
 }

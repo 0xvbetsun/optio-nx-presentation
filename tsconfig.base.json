@@ -22,7 +22,8 @@
       ],
       "@optio-nx-presentation/core-data": ["libs/core-data/src/index.ts"],
       "@optio-nx-presentation/core-state": ["libs/core-state/src/index.ts"],
-      "@optio-nx-presentation/material": ["libs/material/src/index.ts"]
+      "@optio-nx-presentation/material": ["libs/material/src/index.ts"],
+      "@optio-nx-presentation/ui-toolbar": ["libs/ui-toolbar/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

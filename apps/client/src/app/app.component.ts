@@ -15,4 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.books$ = this.booksService.all();
   }
+
+  toggleSideNav() {}
+  logout() {}
 }
